@@ -4,23 +4,37 @@ import re
 import time
 
 WORDS = ["سلام", "شروع", "استارت", "start", "آغاز", "راهنما", "نتیجه"]
-guide = ""
+guide = "برای دریافت نتایج تیم های مورد نظر تون رو به صورت تیم۱!تیم۲ ارسال کنید"
 
 
 def main():
-    msg, receptor = getinbox()
-    if msg in WORDS:
-        sendMessange(guide, receptor)
-        return guide
+    inbox = getinbox()
+    if inbox is not None:
+        if len(inbox) > 0:
+            msg, sender = inbox
+            print(msg)
+            print(sender)
+            if msg in WORDS:
+                sendMessange(guide, sender)
+                print("guide")
+                return guide
+            else:
+                if re.match("^.+[!].+$", msg):
+                    team1, team2 = msg.split("!")
+                    team1 = re.sub(" +", " ", team1)
+                    team2 = re.sub(" +", " ", team2)
+                    result = get_game_result(team1, team2)
+                    sendMessange(result, sender)
+                    print(result)
+                    return result
     else:
-        if re.match("^.+[,!:].+$", msg):
-            team1, team2 = re.split(",!:", msg)
-            team1 = re.sub(" +", " ", team1)
-            team2 = re.sub(" +", " ", team2)
-            result = get_game_result(team1, team2)
-            sendMessange(result, receptor)
+        print("no message")
+        return "no message"
 
 
 while True:
-    main()
-    time.sleep(0.5)
+    try:
+        main()
+    except Exception as e:
+        print(e)
+    time.sleep(3)
