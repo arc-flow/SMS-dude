@@ -11,14 +11,26 @@ def get_matches_data():
     return data
 
 
+def calculate_result(match):
+    goals = []
+    events = requests.get(match["eventsApi"])
+    for event in events.json():
+        if "goalType" in event:
+            goals.append(event["description"])
+    match_result = f'{match["hostName"]} {match["matchGoals"]["host"]} - {match["matchGoals"]["guest"]} {match["guestName"]}'
+    for goal in goals:
+        match_result += f'\n{goal}'
+    return match_result
+
 
 def get_game_result(team1, team2):
     data = get_matches_data()
     for match in data:
         if match["hostName"] == team1 and match["guestName"] == team2:
-            return f'{match["hostName"]} {match["matchGoals"]["host"]} - {match["matchGoals"]["guest"]} {match["guestName"]}'
+            return calculate_result(match)
         elif match["hostName"] == team2 and match["guestName"] == team1:
-            return f'{match["hostName"]}{match["matchGoals"]["host"]}-{match["matchGoals"]["guest"]}{match["guestName"]}'
+            return calculate_result(match)
+
 
 def get_news_title():
     data = []
@@ -43,5 +55,3 @@ def search_api(result):
         for object in data:
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
-
-

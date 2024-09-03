@@ -21,11 +21,13 @@ def main():
 
             elif msg == "اخبار":
                 sendMessange(get_news_title(), sender)
+                return get_news_title()
 
             elif "اخبار:" in msg:
                 sendMessange(search_api(msg), sender)
-                
-            
+                return search_api(msg)
+
+
             else:
                 if re.match("^.+[!].+$", msg):
                     team1, team2 = msg.split("!")
