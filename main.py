@@ -1,4 +1,4 @@
-from scraper import get_game_result
+from scraper import get_game_result  , get_news_title
 from sms import *
 import re
 import time
@@ -18,6 +18,10 @@ def main():
                 sendMessange(guide, sender)
                 print("guide")
                 return guide
+
+            elif msg == "اخبار":
+                sendMessange(get_news_title() , sender)
+            
             else:
                 if re.match("^.+[!].+$", msg):
                     team1, team2 = msg.split("!")
