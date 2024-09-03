@@ -29,4 +29,4 @@ def get_news_title():
     if request.status_code == 200:
         for object in data:
             titles.append(object["title"])
-        return titles[0:5]
+        return return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
