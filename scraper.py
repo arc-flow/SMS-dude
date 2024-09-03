@@ -30,3 +30,15 @@ def get_news_title():
         for object in data:
             titles.append(object["title"])
         return return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+
+def search_api(result):
+    data = []
+    titles = []
+    word = result.split(":")
+    API_URL = f"https://search-api.varzesh3.com/v1.0/query?q={word[1]}"
+    request = requests.get(API_URL)
+    data += request.json()['news']
+    if request.status_code == 200:
+        for object in data:
+            titles.append(object["title"])
+    return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
