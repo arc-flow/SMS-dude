@@ -31,6 +31,7 @@ def get_news_title():
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
+
 def search_api(result):
     data = []
     titles = []
@@ -42,3 +43,5 @@ def search_api(result):
         for object in data:
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+
+
