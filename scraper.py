@@ -13,7 +13,7 @@ def get_matches_data():
 
 
 def get_game_result(team1, team2):
-    data = get_data()
+    data = get_matches_data()
     for match in data:
         if match["hostName"] == team1 and match["guestName"] == team2:
             return f'{match["hostName"]} {match["matchGoals"]["host"]} - {match["matchGoals"]["guest"]} {match["guestName"]}'
@@ -29,7 +29,7 @@ def get_news_title():
     if request.status_code == 200:
         for object in data:
             titles.append(object["title"])
-        return return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+            return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
 def search_api(result):
     data = []

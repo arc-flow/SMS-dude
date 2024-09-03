@@ -20,10 +20,10 @@ def main():
                 return guide
 
             elif msg == "اخبار":
-                sendMessange(get_news_title() , sender)
+                sendMessange(get_news_title(), sender)
 
             elif "جستجو" in msg:
-                sendMessange(search_api(msg) , sender)
+                sendMessange(search_api(msg), sender)
                 
             
             else:
