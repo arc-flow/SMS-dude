@@ -1,4 +1,4 @@
-from scraper import get_game_result  , get_news_title , search_api
+from scraper import get_game_result, get_news_title, search_api
 from sms import *
 import re
 import time

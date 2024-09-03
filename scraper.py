@@ -22,14 +22,14 @@ def get_game_result(team1, team2):
 
 def get_news_title():
     data = []
-    titles  = []
+    titles = []
     API_URL_NEWS = "https://web-api.varzesh3.com/v1.0/news/most-commented?includeSports[0]=Football&includeSports[1]=Futsal&includeSports[2]=BeachSoccer"
     request = requests.get(API_URL_NEWS)
     data += request.json()
     if request.status_code == 200:
         for object in data:
             titles.append(object["title"])
-            return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+    return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
 def search_api(result):
     data = []
