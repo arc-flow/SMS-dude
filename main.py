@@ -22,7 +22,7 @@ def main():
             elif msg == "اخبار":
                 sendMessange(get_news_title(), sender)
 
-            elif "اخبار" in msg:
+            elif "اخبار:" in msg:
                 sendMessange(search_api(msg), sender)
                 
             
