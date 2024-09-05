@@ -57,9 +57,9 @@ def search_api(result):
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
 
-def today_leagues():
+def get_leagues(day):
     leagues = ""
-    API_URL = "https://web-api.varzesh3.com/v1.0/livescore/0"
+    API_URL = f"https://web-api.varzesh3.com/v1.0/livescore/{day}"
     r = requests.get(API_URL)
     if r.status_code == 200:
         r = r.json()
@@ -68,10 +68,10 @@ def today_leagues():
         return leagues
 
 
-def today_games(msg):
+def get_games(msg, day):
     matches = ""
     league_id = int(msg.split(":")[-1])
-    API_URL = "https://web-api.varzesh3.com/v1.0/livescore/0"
+    API_URL = f"https://web-api.varzesh3.com/v1.0/livescore/{day}"
     r = requests.get(API_URL)
     if r.status_code == 200:
         r = r.json()

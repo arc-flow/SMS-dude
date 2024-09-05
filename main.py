@@ -25,9 +25,17 @@ def main():
             elif "اخبار:" in msg:
                 sendMessange(search_api(msg), sender)
             elif msg == "امروز":
-                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید."+"\n"+today_leagues(), sender)
+                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(0), sender)
             elif "امروز:" in msg:
-                sendMessange(today_games(msg), sender)
+                sendMessange(get_games(msg, 0), sender)
+            elif msg == "دیروز":
+                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(-1), sender)
+            elif "دیروز:" in msg:
+                sendMessange(get_games(msg, -1), sender)
+            elif msg == "فردا":
+                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(1), sender)
+            elif "فردا:" in msg:
+                sendMessange(get_games(msg, 1), sender)
             else:
                 if re.match("^.+[!].+$", msg):
                     team1, team2 = msg.split("!")
