@@ -29,11 +29,11 @@ def main():
             elif "امروز:" in msg:
                 sendMessange(get_games(msg, 0), sender)
             elif msg == "دیروز":
-                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(-1), sender)
+                sendMessange("لیگ خود را به صورت دیروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(-1), sender)
             elif "دیروز:" in msg:
                 sendMessange(get_games(msg, -1), sender)
             elif msg == "فردا":
-                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(1), sender)
+                sendMessange("لیگ خود را به صورت فردا:شماره لیگ انتخاب کنید." + "\n" + get_leagues(1), sender)
             elif "فردا:" in msg:
                 sendMessange(get_games(msg, 1), sender)
             else:
