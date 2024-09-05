@@ -1,4 +1,4 @@
-from scraper import get_game_result, get_news_title, search_api
+from scraper import *
 from sms import *
 import re
 import time
@@ -21,13 +21,13 @@ def main():
 
             elif msg == "اخبار":
                 sendMessange(get_news_title(), sender)
-                return get_news_title()
 
             elif "اخبار:" in msg:
                 sendMessange(search_api(msg), sender)
-                return search_api(msg)
-
-
+            elif msg == "امروز":
+                sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید."+"\n"+today_leagues(), sender)
+            elif "امروز:" in msg:
+                sendMessange(today_games(msg), sender)
             else:
                 if re.match("^.+[!].+$", msg):
                     team1, team2 = msg.split("!")
@@ -35,11 +35,8 @@ def main():
                     team2 = re.sub(" +", " ", team2)
                     result = get_game_result(team1, team2)
                     sendMessange(result, sender)
-                    print(result)
-                    return result
     else:
         print("no message")
-        return "no message"
 
 
 while True:

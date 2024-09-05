@@ -55,3 +55,30 @@ def search_api(result):
         for object in data:
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+
+
+def today_leagues():
+    leagues = ""
+    API_URL = "https://web-api.varzesh3.com/v1.0/livescore/0"
+    r = requests.get(API_URL)
+    if r.status_code == 200:
+        r = r.json()
+        for i, league in enumerate(r["leagues"], 1):
+            leagues += f'{i}-{league["title"]}\n'
+        return leagues
+
+
+def today_games(msg):
+    matches = ""
+    league_id = int(msg.split(":")[-1])
+    API_URL = "https://web-api.varzesh3.com/v1.0/livescore/0"
+    r = requests.get(API_URL)
+    if r.status_code == 200:
+        r = r.json()
+        all_matches = r["matches"]
+        current_league = r["leagues"][league_id - 1]
+        for matchId in current_league["dates"][0]["matchIds"]:
+            for match in all_matches:
+                if match["sportId"] == matchId:
+                    matches += f'{match["scheduledStartTime"]} {match["hostName"]} {match["matchGoals"]["host"]} - {match["matchGoals"]["guest"]} {match["guestName"]}\n'
+        return matches
