@@ -59,12 +59,13 @@ def search_api(result):
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
 def gpt_API(message):
+    thingtosend = message.split(":")
     llm = ChatOpenAI(
         model="gpt-3.5-turbo",
         base_url="https://api.avalai.ir/v1",
         api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
 
-    return llm.invoke(message).content
+    return llm.invoke(thingtosend[1]).content
 
 
 def get_leagues(day):
