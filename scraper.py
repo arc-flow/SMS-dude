@@ -64,7 +64,7 @@ def gpt_API(message):
         base_url="https://api.avalai.ir/v1",
         api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
 
-    return llm.invoke("can i talk with you?").content
+    return llm.invoke(message).content
 
 
 def get_leagues(day):
