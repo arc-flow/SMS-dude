@@ -1,4 +1,6 @@
 import requests
+from langchain_openai import ChatOpenAI
+
 
 
 def get_matches_data():
@@ -43,5 +45,13 @@ def search_api(result):
         for object in data:
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
+
+def gpt_API(message):
+    llm = ChatOpenAI(
+        model="gpt-3.5-turbo",
+        base_url="https://api.avalai.ir/v1",
+        api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
+
+    return llm.invoke("can i talk with you?").content
 
 

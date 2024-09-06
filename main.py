@@ -1,4 +1,4 @@
-from scraper import get_game_result, get_news_title, search_api
+from scraper import get_game_result, get_news_title, search_api, gpt_API
 from sms import *
 import re
 import time
@@ -24,6 +24,9 @@ def main():
 
             elif "اخبار:" in msg:
                 sendMessange(search_api(msg), sender)
+
+            elif msg == "چت":
+                sendMessange(gpt_API(msg), sender)
                 
             
             else:
