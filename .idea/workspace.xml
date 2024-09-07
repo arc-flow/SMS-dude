@@ -7,7 +7,7 @@
     <list default="true" id="2fbffc9f-48ec-46ad-a0a6-08826cc6fde8" name="Changes" comment="gpt version1 added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scraper.py" beforeDir="false" afterPath="$PROJECT_DIR$/scraper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sms.py" beforeDir="false" afterPath="$PROJECT_DIR$/sms.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +156,8 @@
       <workItem from="1725527353379" duration="3066000" />
       <workItem from="1725532089346" duration="675000" />
       <workItem from="1725532938067" duration="30000" />
-      <workItem from="1725696132864" duration="739000" />
+      <workItem from="1725696132864" duration="1021000" />
+      <workItem from="1725700563788" duration="419000" />
     </task>
     <task id="LOCAL-00001" summary="gpt version1 added">
       <option name="closed" value="true" />
@@ -178,6 +179,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/footballSMSMatchResulte$scraper.coverage" NAME="scraper Coverage Results" MODIFIED="1725696786635" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/footballSMSMatchResulte$main.coverage" NAME="main Coverage Results" MODIFIED="1725696392640" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/footballSMSMatchResulte$main.coverage" NAME="main Coverage Results" MODIFIED="1725700917017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

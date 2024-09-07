@@ -16,11 +16,8 @@ def getinbox():
     global api
     params = {'linenumber': '200090908000', 'isread': 0}
     response = api.sms_receive(params)
-    print(response)
     if len(response) > 0:
         for msg in response:
             result = msg['message']
             sender = msg['sender']
             return [result, sender]
-
-    print("you have an error while getting message")

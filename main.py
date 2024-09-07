@@ -12,8 +12,7 @@ def main():
     if inbox is not None:
         if len(inbox) > 0:
             msg, sender = inbox
-            print(msg)
-            print(sender)
+            print(f"{sender} - {msg}")
             if msg in WORDS:
                 sendMessange(guide, sender)
                 print("guide")
@@ -21,24 +20,25 @@ def main():
 
             elif msg == "اخبار":
                 sendMessange(get_news_title(), sender)
+
+            elif msg.startswith("اخبار:"):
+                sendMessange(search_api(msg), sender)
             elif msg == "چت":
                 sendMessange(gpt_hi(), sender)
-            elif "چت:" in msg:
+            elif msg.startswith("چت:"):
                 sendMessange(gpt_API(msg), sender)
 
-            elif "اخبار:" in msg:
-                sendMessange(search_api(msg), sender)
             elif msg == "امروز":
                 sendMessange("لیگ خود را به صورت امروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(0), sender)
-            elif "امروز:" in msg:
+            elif msg.startswith("امروز:"):
                 sendMessange(get_games(msg, 0), sender)
             elif msg == "دیروز":
                 sendMessange("لیگ خود را به صورت دیروز:شماره لیگ انتخاب کنید." + "\n" + get_leagues(-1), sender)
-            elif "دیروز:" in msg:
+            elif msg.startswith("دیروز:"):
                 sendMessange(get_games(msg, -1), sender)
             elif msg == "فردا":
                 sendMessange("لیگ خود را به صورت فردا:شماره لیگ انتخاب کنید." + "\n" + get_leagues(1), sender)
-            elif "فردا:" in msg:
+            elif msg.startswith("فردا:"):
                 sendMessange(get_games(msg, 1), sender)
             else:
                 if re.match("^.+[!].+$", msg):
@@ -47,8 +47,6 @@ def main():
                     team2 = re.sub(" +", " ", team2)
                     result = get_game_result(team1, team2)
                     sendMessange(result, sender)
-    else:
-        print("no message")
 
 
 while True:
