@@ -21,8 +21,9 @@ def main():
 
             elif msg == "اخبار":
                 sendMessange(get_news_title(), sender)
-
             elif msg == "چت":
+                sendMessange(gpt_hi(), sender)
+            elif "چت:" in msg:
                 sendMessange(gpt_API(msg), sender)
 
             elif "اخبار:" in msg:

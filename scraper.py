@@ -2,7 +2,6 @@ import requests
 from langchain_openai import ChatOpenAI
 
 
-
 def get_matches_data():
     data = []
     for day in range(-2, 1):
@@ -58,6 +57,7 @@ def search_api(result):
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
+
 def gpt_API(message):
     thingtosend = message.split(":")
     llm = ChatOpenAI(
@@ -65,7 +65,15 @@ def gpt_API(message):
         base_url="https://api.avalai.ir/v1",
         api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
 
-    return llm.invoke(thingtosend[1]).content
+    return llm.invoke(thingtosend[1] + "--very_short, very_short, --summarized, summarized").content
+
+
+def gpt_hi():
+    llm = ChatOpenAI(
+        model="gpt-3.5-turbo",
+        base_url="https://api.avalai.ir/v1",
+        api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
+    return llm.invoke("سلام؟!").content
 
 
 def get_leagues(day):
