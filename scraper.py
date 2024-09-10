@@ -1,4 +1,5 @@
 import requests
+from unidecode import unidecode
 from langchain_openai import ChatOpenAI
 
 
@@ -89,7 +90,7 @@ def get_leagues(day):
 
 def get_games(msg, day):
     matches = ""
-    league_id = int(msg.split(":")[-1])
+    league_id = int(unidecode(msg.split(":")[-1]))
     API_URL = f"https://web-api.varzesh3.com/v1.0/livescore/{day}"
     r = requests.get(API_URL)
     if r.status_code == 200:
