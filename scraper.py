@@ -1,4 +1,5 @@
 import requests
+import os
 from unidecode import unidecode
 from langchain_openai import ChatOpenAI
 
@@ -58,22 +59,19 @@ def search_api(result):
             titles.append(object["title"])
     return f"{titles[0]}\n{titles[1]}\n{titles[2]}\n{titles[3]}\n{titles[4]}"
 
+llm = ChatOpenAI(
+        model="gpt-3.5-turbo",
+        base_url="https://api.avalai.ir/v1",
+        api_key=os.environ.get("avalai-key"))
 
 def gpt_API(message):
     thingtosend = message.split(":")
-    llm = ChatOpenAI(
-        model="gpt-3.5-turbo",
-        base_url="https://api.avalai.ir/v1",
-        api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
-
+    global llm
     return llm.invoke(thingtosend[1] + "--very_short, very_short, --summarized, summarized").content
 
 
 def gpt_hi():
-    llm = ChatOpenAI(
-        model="gpt-3.5-turbo",
-        base_url="https://api.avalai.ir/v1",
-        api_key="aa-88oVsr7AaMIQj3GTbMnXbLT4yY9LDUNeCBO5HRzlCOrbaTy8")
+    global llm
     return llm.invoke("سلام؟!").content
 
 
