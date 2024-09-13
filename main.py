@@ -13,7 +13,7 @@ def main():
     if inbox is not None:
         if len(inbox) > 0:
             msg, sender = inbox
-            print(f"{sender} - {msg}")
+            print(f"{sender} -> {msg}")
             if msg in WORDS:
                 if sender not in customers:
                     sendMessange(guide, sender)

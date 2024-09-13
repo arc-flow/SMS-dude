@@ -1,7 +1,7 @@
 import os
 from kavenegar import *
 
-api = KavenegarAPI(os.environ.get("kavenegar-key"))
+api = KavenegarAPI(os.environ.get("kavenegar_key"))
 
 
 def sendMessange(msg, receptor):
